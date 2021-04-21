@@ -1,0 +1,93 @@
+nav {
+    max-width: 100%;
+    background-color: skyblue;
+    height:100px;
+}
+/* .navContent{
+    background-color: blueviolet;
+    width: 80px;
+    height:40px;
+    text-align: center;
+    justify-items: center;
+} */
+.navLinks {
+    background-color: blueviolet;
+    width: 80px;
+    height:40px;
+    text-align: center;
+    justify-items: center;
+    font-size: 30px;
+    font-style:inherit;
+    text-decoration-style: none;
+    border-radius: 5px;
+    display: inline-flex;
+    justify-content: space-between;
+    margin-left: 50px;
+    
+}
+.post-excerpt{
+    background-color:beige;
+    text-align: center;
+   
+}
+.muted-button{
+     background-color: blueviolet;
+    width: 80px;
+    height:50px;
+    text-align: center;
+    justify-items: center;
+    font-size: 30px;
+    font-style:inherit;
+    text-decoration-style: none;
+    border-radius: 5px;
+    margin: 5px;
+}
+.post-content{
+    font-family:  serif,'Times New Roman', Times;
+    font-size: medium;
+    font-weight: normal;
+
+}
+.username{
+    font-size: small;
+}
+form{
+    width: 500px;
+    max-width: 100%;
+    background-color: azure;
+    text-align: center;
+    justify-self: center;
+    border-radius: 30px;
+    height: 500px;
+    position: relative;
+}
+input{
+    height: 30px;
+    width: 80%;
+    border-radius: 5px;
+    margin: 30px;
+}
+textarea{
+    height: 200px;
+    width: 80%;
+    border-radius: 5px;
+    margin: 30px;   
+}
+select{
+    height: 30px;
+    width: 80%;
+    border-radius: 5px;
+    margin: 30px;
+}
+button{
+    background-color: blueviolet;
+    width: 80px;
+    height:50px;
+    text-align: center;
+    justify-items: center;
+    font-size: 30px;
+    font-style:inherit;
+    text-decoration-style: none;
+    border-radius: 5px;
+    margin: 5px; 
+}

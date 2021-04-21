@@ -24,8 +24,19 @@ function App() {
             render={() => (
               <React.Fragment>
               
-                 <AddPostForm />
+                
                 <PostsList />
+              </React.Fragment>
+            )}
+          />
+          <Route
+            exact
+            path="/add"
+            render={() => (
+              <React.Fragment>
+              
+                 <AddPostForm />
+                
               </React.Fragment>
             )}
           />

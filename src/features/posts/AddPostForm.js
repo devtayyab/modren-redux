@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux'
 import { nanoid } from '@reduxjs/toolkit'
 import { useSelector } from 'react-redux'
 import { postAdded } from './postsSlice'
+import './style.css'
 export const AddPostForm = () => {
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
