@@ -1,4 +1,4 @@
-nav {
+/* nav {
     max-width: 100%;
     background-color: skyblue;
     height:100px;
@@ -10,7 +10,7 @@ nav {
     text-align: center;
     justify-items: center;
 } */
-.navLinks {
+/* .navLinks {
     background-color: blueviolet;
     width: 80px;
     height:40px;
@@ -90,4 +90,4 @@ button{
     text-decoration-style: none;
     border-radius: 5px;
     margin: 5px; 
-}
+} */ 

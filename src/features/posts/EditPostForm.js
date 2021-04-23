@@ -2,9 +2,24 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { postUpdated, selectPostById } from './postsSlice'
-
-
+import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& .MuiTextField-root': {
+      margin: theme.spacing(1),
+      width: 200,
+    },
+    textField: {
+      marginLeft: theme.spacing(1),
+      marginRight: theme.spacing(1),
+      width: '25ch',
+    }
+  },
+}));
 export const EditPostForm = ({ match }) => {
+  const classes = useStyles();
   const { postId } = match.params
 
   const post = useSelector(state => selectPostById(state, postId))
@@ -29,12 +44,13 @@ export const EditPostForm = ({ match }) => {
     <section>
       <h2>Edit Post</h2>
       <form>
-        <label htmlFor="postTitle">Post Title:</label>
-        <input
-          type="text"
-          id="postTitle"
-          name="postTitle"
-          placeholder="What's on your mind?"
+      <TextField
+          label="Title"
+          id="margin-none"
+          defaultValue={title}
+          className={classes.textField}
+          
+        
           value={title}
           onChange={onTitleChanged}
         />
@@ -46,9 +62,9 @@ export const EditPostForm = ({ match }) => {
           onChange={onContentChanged}
         />
       </form>
-      <button type="button" onClick={onSavePostClicked}>
+      <Button type="button" onClick={onSavePostClicked}>
         Save
-      </button>
+      </Button>
     </section>
   )
 }

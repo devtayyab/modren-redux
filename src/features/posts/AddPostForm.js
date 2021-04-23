@@ -3,8 +3,32 @@ import { useDispatch } from 'react-redux'
 import { nanoid } from '@reduxjs/toolkit'
 import { useSelector } from 'react-redux'
 import { postAdded } from './postsSlice'
+import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
 import './style.css'
+import { FormControl } from '@material-ui/core';
+import TextField from '@material-ui/core/TextField';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& .MuiTextField-root': {
+      margin: theme.spacing(1),
+      width: '25ch',
+    },
+    inputs:{
+      margin:'50px',
+    },
+    papers:{
+      width:'70px',
+      
+    },
+    containers:{
+      width:'50',
+    }
+  },
+}));
 export const AddPostForm = () => {
+  const classes = useStyles();
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
   const [userId, setUserId] = useState('')
@@ -30,31 +54,42 @@ export const AddPostForm = () => {
     </option>
   ))
   return (
-    <section>
+    <div className={classes.container}>
+    <Paper elevation={3} className={classes.papers}>
       <h2>Add a New Post</h2>
-      <form>
+      <FormControl>
         <label htmlFor="postTitle">Post Title:</label>
-        <input
-          type="text"
-          id="postTitle"
-          name="postTitle"
+        <TextField
+        className={classes.inputs}
+          label="Title"
+          id="filled-full-width"
+          defaultValue={title}
+          variant="outlined"
           value={title}
           onChange={onTitleChanged}
         />
+        <br></br>
         <label htmlFor="postContent">Content:</label>
-        <textarea
-          id="postContent"
-          name="postContent"
+        <TextField
+         className={classes.inputs}
+          id="outlined-multiline-static"
+          label="content"
+          multiline
+          rows={4}
+          defaultValue={content}
+          variant="outlined"
           value={content}
           onChange={onContentChanged}
         />
+        <br></br>
          <label htmlFor="postAuthor">Author:</label>
-        <select id="postAuthor" value={userId} onChange={onAuthorChanged}>
+        <select id="postAuthor"  className={classes.inputs} value={userId} onChange={onAuthorChanged}>
           <option value=""></option>
           {usersOptions}
         </select>
         <button type="button" onClick={onSavePostClicked} disabled={!canSave}>Add</button>
-      </form>
-    </section>
+      </FormControl>
+    </Paper>
+    </div>
   )
 }
