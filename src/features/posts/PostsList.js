@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import {ReactionButtons} from './ReactionButtons'
+import Banner from './banner.js'
 import { selectAllPosts } from './postsSlice'
 import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
@@ -8,17 +9,22 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 
+
 // import './style.css'
 const useStyles = makeStyles((theme) => ({
-  root: {
-  
-    flexGrow: 1,
 
+
+  bannerhead:{
+    position:'relative',
+    color:'white',
+    textAlign:'center',
+    justifyContent:'center'
   },
   paper: {
     padding: theme.spacing(2),
     textAlign: 'center',
     color: theme.palette.text.secondary,
+    
   },
   Link:{
     textDecoration:'none',
@@ -27,16 +33,17 @@ const useStyles = makeStyles((theme) => ({
     width:150,
   },
   container :{
-  maxWidth:'100%',
-  },
+    position:'relative'
+      },
   grid:{
-    margin: 'auto',
-    display: 'inline-flex',
+   
 
+  },
+  banner:{
+  
   }
   
 }));
-
 export const PostsList = () => {
   const classes = useStyles();
 
@@ -52,9 +59,10 @@ export const PostsList = () => {
 const renderedPosts = orderedPosts.map(post => {
   return(
     <div className={classes.root}>
-       <Grid container spacing={2} className={classes.container} >
-        <Grid item  xs={6} sm={6} key={post.id} className={classes.grid}>
-          <Paper className={classes.paper}>
+   
+       {/* <Grid container spacing={2} className={classes.container} > */}
+        <Grid item   key={post.id} className={classes.grid}>
+          <Paper elevation={3} className={classes.paper}>
           <h3>{post.title}</h3>
           <p className="post-content">{post.content}</p>
       <p className="username">{users[1].name}</p>
@@ -66,16 +74,21 @@ const renderedPosts = orderedPosts.map(post => {
       </Button>
           </Paper>
         </Grid>
-        </Grid>
+        {/* </Grid> */}
   
     </div>
   )
 })  
 
   return (
+    <div>
+    
     <section className="posts-list">
-      <h2>Posts</h2>
+   
+      <div className={classes.container}>
       {renderedPosts}
+      </div>
     </section>
+    </div>
   )
 }

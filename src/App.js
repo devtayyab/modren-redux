@@ -1,4 +1,5 @@
 import React from 'react'
+import Banner from './features/posts/banner'
 import {
   BrowserRouter as Router,
   Switch,
@@ -16,6 +17,7 @@ function App() {
   return (
     <Router>
       <Navbar />
+      <Banner />
       <div className="App">
         <Switch>
           <Route

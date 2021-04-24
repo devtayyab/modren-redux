@@ -10,23 +10,25 @@ import { FormControl } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    '& .MuiTextField-root': {
-      margin: theme.spacing(1),
-      width: '25ch',
-    },
     inputs:{
-      margin:'50px',
+      margin:0,
+
     },
     papers:{
-      width:'70px',
+      width:'50%',
+      textAlign:'center',
+      
       
     },
     containers:{
-      width:'50',
+      maxWidth:'100%',
+      display:'flex',
+      
+
+      
     }
-  },
-}));
+  }
+));
 export const AddPostForm = () => {
   const classes = useStyles();
   const [title, setTitle] = useState('')
@@ -62,9 +64,14 @@ export const AddPostForm = () => {
         <TextField
         className={classes.inputs}
           label="Title"
-          id="filled-full-width"
+          id="outlined-full-width"
+          style={{ margin: 8 }}
           defaultValue={title}
           variant="outlined"
+          InputLabelProps={{
+            shrink: true,
+          }}
+         
           value={title}
           onChange={onTitleChanged}
         />
@@ -78,6 +85,9 @@ export const AddPostForm = () => {
           rows={4}
           defaultValue={content}
           variant="outlined"
+          InputLabelProps={{
+            shrink: true,
+          }}
           value={content}
           onChange={onContentChanged}
         />

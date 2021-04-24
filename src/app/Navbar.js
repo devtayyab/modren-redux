@@ -25,7 +25,8 @@ const useStyles = makeStyles((theme) => ({
     marginRight:'30px'
   },
   link:{
-    textDecorationStyle:'none'
+    textDecoration:'none',
+    color: 'white'
   }
 }));
 
