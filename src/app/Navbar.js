@@ -7,13 +7,14 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import {Button} from '@material-ui/core'
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-
+const netlifyIdentity = require("netlify-identity-widget")
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -47,6 +48,12 @@ export const Navbar = () => {
           <Typography variant="h5">
           <Link to="/add"  className={classes.link}>Add</Link>
           </Typography>
+          <Button onClick={()=>{
+            netlifyIdentity.init()  
+            netlifyIdentity.open()
+
+          }}>Login</Button>
+
           {/* {auth && (
             <div>
               <IconButton
