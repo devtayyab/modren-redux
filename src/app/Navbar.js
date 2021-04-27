@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import '../features/posts/style.css'
 import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
@@ -33,41 +33,54 @@ const useStyles = makeStyles((theme) => ({
 
 export const Navbar = () => {
   const classes = useStyles();
+ const [auth , setauth] = useState()
+//  setauth(user)
   return (
     <nav>
        <div className={classes.root}>
      
       <AppBar position="static">
         <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h5" className={classes.title}>
-          <Link to="/" className={classes.link}>Posts</Link>
-          </Typography>
-          <Typography variant="h5">
-          <Link to="/add"  className={classes.link}>Add</Link>
-          </Typography>
-          <Button onClick={()=>{
-            netlifyIdentity.init()  
-            netlifyIdentity.open()
+          
+         
+          {auth && (
+            <div>
+             <Typography variant="h5" className={classes.title}>
+             <Link to="/" className={classes.link}>Posts</Link>
+             </Typography>
+                <Typography variant="h5">
+                <Link to="/add"  className={classes.link}>Add</Link>
+                </Typography>
+                </div>
+          )}
+        
+          {!auth &&(
+                <Button onClick={()=>{
+                  netlifyIdentity.init()  
+                  netlifyIdentity.open()
+                setauth(netlifyIdentity.currentUser())
+                }}>Login</Button>
+          )}
+        
 
-          }}>Login</Button>
-
-          {/* {auth && (
+          {auth && (
             <div>
               <IconButton
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
-                onClick={handleMenu}
+                onClick={()=>{
+                  netlifyIdentity.init()
+                  netlifyIdentity.open()
+                  setauth(netlifyIdentity.currentUser().user_metadata.full_name)
+                }}
                 color="inherit"
               >
                 <AccountCircle />
               </IconButton>
-              <Menu
+              {/* <Menu
                 id="menu-appbar"
-                anchorEl={anchorEl}
+                // anchorEl={anchorEl}
                 anchorOrigin={{
                   vertical: 'top',
                   horizontal: 'right',
@@ -77,14 +90,15 @@ export const Navbar = () => {
                   vertical: 'top',
                   horizontal: 'right',
                 }}
-                open={open}
-                onClose={handleClose}
-              > */}
-                {/* <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
-              </Menu>
+                // open={open}
+                // onClose={handleClose}
+              >
+              
+                <MenuItem >Profile</MenuItem>
+                <MenuItem >My account</MenuItem>
+              </Menu> */}
             </div>
-          )} */}
+          )}
         </Toolbar>
       </AppBar>
     </div>
