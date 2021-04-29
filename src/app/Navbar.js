@@ -1,7 +1,10 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useReducer, useState} from 'react'
 import '../features/posts/style.css'
+import {useSelector, useDispatch} from 'react-redux'
+import useradded from '../features/users/usersslice'
 import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
+import Login from './login'
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -33,7 +36,10 @@ const useStyles = makeStyles((theme) => ({
 
 export const Navbar = () => {
   const classes = useStyles();
- const [auth , setauth] = useState()
+  const dispatch = useDispatch();
+  const user= useSelector(state => state.users[0].user)
+  console.log("usres    " + user)
+ const [auth , setauth] = useState(user)
 //  setauth(user)
   return (
     <nav>
@@ -56,10 +62,11 @@ export const Navbar = () => {
         
           {!auth &&(
                 <Button onClick={()=>{
-                  netlifyIdentity.init()  
+                  netlifyIdentity.init() 
                   netlifyIdentity.open()
-                setauth(netlifyIdentity.currentUser())
-                }}>Login</Button>
+                  setauth(netlifyIdentity.currentUser().user_metadata.full_name)
+                
+                 } }>Login</Button>
           )}
         
 
@@ -73,6 +80,7 @@ export const Navbar = () => {
                   netlifyIdentity.init()
                   netlifyIdentity.open()
                   setauth(netlifyIdentity.currentUser().user_metadata.full_name)
+                  dispatch(useradded({user: auth}))
                 }}
                 color="inherit"
               >

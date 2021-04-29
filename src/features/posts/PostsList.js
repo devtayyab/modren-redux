@@ -65,7 +65,7 @@ const renderedPosts = orderedPosts.map(post => {
           <Paper elevation={3} className={classes.paper}>
           <h3>{post.title}</h3>
           <p className="post-content">{post.content}</p>
-      <p className="username">{users[1].name}</p>
+      <p className="username">{users[0].name}</p>
       <ReactionButtons post={post}/>
       <Button variant="contained"  className={classes.margin}>
       <Link to={`/posts/${post.id}`} className={classes.Link} >
