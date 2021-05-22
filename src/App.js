@@ -17,7 +17,7 @@ function App() {
   return (
     <Router>
       <Navbar />
-      <Banner />
+    
       <div className="App">
         <Switch>
           <Route
