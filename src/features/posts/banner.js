@@ -1,6 +1,5 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
-import imag from '../../assets/BLOG1.jpg'
 const useStyles = makeStyles((theme) => ({
 
     imgg:{
